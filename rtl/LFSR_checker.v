@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+
 module LFSR_checker
 #(
     parameter LFSR_WIDTH = 8

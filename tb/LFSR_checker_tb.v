@@ -132,27 +132,19 @@ module LFSR_checker_tb;
         end
     `endif
 
-    LSFR_generator #  ( 
-        .LFSR_WIDTH   (LFSR_WIDTH   )  
-    )   
-    LFSR_dut( 
-        .clk          (clk          )                                                           ,
-        .i_seed       (i_seed       )                                                           ,
-        .i_valid      (i_valid      )                                                           ,
-        .i_reset      (i_reset      )                                                           ,
-        .i_soft_reset (i_soft_reset )                                                           ,
-        .o_LFSR       (LFSR         )    
-    );
-    
-    LFSR_checker #  ( 
-        .LFSR_WIDTH   (LFSR_WIDTH   )  
+    LSFR_top
+    #(
+        .LFSR_WIDTH     (LFSR_WIDTH     )                                                 
     )
-    LFSR_checker_dut( 
-        .clk          (clk          )                                                           ,
-        .i_LFSR       (LFSR         )                                                           ,
-        .i_reset      (i_reset      )                                                           ,
-        .o_lock       (o_lock       )    
+    u_LSFR_top
+    (
+        .o_LFSR         (LFSR           )                                                       ,
+        .o_lock         (o_lock         )                                                       ,
+        .i_seed         (i_seed         )                                                       ,
+        .i_valid        (i_valid        )                                                       ,
+        .i_reset        (i_reset        )                                                       ,
+        .i_soft_reset   (i_soft_reset   )                                                       ,
+        .clk            (clk            )                                  
     );
-
-
+       
 endmodule
